@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdarg.h>
+#include <string.h>
 
 #define n 7 //number of tags
 #define s 10 //number of stores
