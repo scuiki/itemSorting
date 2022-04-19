@@ -16,10 +16,8 @@ va_start (valist, tag);
 		catalogueNumber = catalogueNumber * va_arg(valist, int);
 		
 va_end(valist);	
-		
-		store = catalogueNumber;
-	
-	return store;
+
+	return catalogueNumber;
 }
 
 int main () {
