@@ -10,7 +10,7 @@ int storeSorting (int tag,...) {
 
 va_list valist;
 
-int catalogueNumber = 1, i = 0, store;
+int catalogueNumber = 1;
 
 va_start (valist, tag);
 
