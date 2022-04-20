@@ -31,6 +31,7 @@ char division;
 //execute until user types ".", which starts the search
 	while (division != '.'){
 	char str[100], *sport, *street, *yellow, *red, *lowCost, *mediumCost, *highCost;
+		fflush(stdin);
 		gets(str);
 
 //checking for a substring
