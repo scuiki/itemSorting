@@ -5,6 +5,9 @@
 #define n 7 //number of tags
 #define s 10 //number of stores
 
+//tags
+int sport = 2, street = 3, yellow = 5, red = 7, lowCost = 11, mediumCost = 13, highCost = 17;
+
 //using "stdarg.h" in order to determine, when calling the function, how many arguments it contains
 int storeSorting (int tag,...) {
 
@@ -26,44 +29,44 @@ va_end(valist);
 int tagSearching () {
 
 int i = 0, value[n], searchNumber = 1;
-char *sport, *street, *yellow, *red, *lowCost, *mediumCost, *highCost, *end = NULL;
+char *sSport, *sStreet, *sYellow, *sRed, *sLowCost, *sMediumCost, *sHighCost, *sEnd = NULL;
 
 	//executing while string doesn't contain "."
-	while (end == NULL) {
+	while (sEnd == NULL) {
 	char str[100];
 		fflush(stdin);
 		gets(str);
 
 		//checking for substrings
-		sport = strstr (str, "sport");
-		street = strstr (str, "street");
-		yellow = strstr (str, "yellow");
-		red = strstr (str, "red");
-		lowCost = strstr (str, "lowCost");
-		mediumCost = strstr (str, "mediumCost");
-		highCost = strstr (str, "highCost");
-		end = strstr (str, ".");
+		sSport = strstr (str, "sport");
+		sStreet = strstr (str, "street");
+		sYellow = strstr (str, "yellow");
+		sRed = strstr (str, "red");
+		sLowCost = strstr (str, "lowCost");
+		sMediumCost = strstr (str, "mediumCost");
+		sHighCost = strstr (str, "highCost");
+		sEnd = strstr (str, ".");
 				
-			if (sport != NULL) {
-				value[i] = 2;
+			if (sSport != NULL) {
+				value[i] = sport;
 				i++;
-			}	if (street != NULL) {
-					value[i] = 3;
+			}	if (sStreet != NULL) {
+					value[i] = street;
 					i++;
-				}	if (yellow != NULL) {
-						value[i] = 5;
+				}	if (sYellow != NULL) {
+						value[i] = yellow;
 						i++;
-					}	if (red != NULL) {
-							value[i] = 7;
+					}	if (sRed != NULL) {
+							value[i] = red;
 							i++;
-						}	if (lowCost != NULL) {
-								value[i] = 11;
+						}	if (sLowCost != NULL) {
+								value[i] = lowCost;
 								i++;
-							}	if (mediumCost != NULL) {
-									value[i] = 13;
+							}	if (sMediumCost != NULL) {
+									value[i] = mediumCost;
 									i++;
-								}	if (highCost != NULL) {
-										value[i] = 17;
+								}	if (sHighCost != NULL) {
+										value[i] = highCost;
 										i++;
 									}
 	}
@@ -77,10 +80,7 @@ char *sport, *street, *yellow, *red, *lowCost, *mediumCost, *highCost, *end = NU
 
 int main () {
 	
-//tags
-int sport = 2, street = 3, yellow = 5, red = 7, lowCost = 11, mediumCost = 13, highCost = 17;
-
-int store[s], snumber;
+int store[s], srchNumber;
 
 	store[0] = storeSorting (3, sport, red, mediumCost);
 	store[1] = storeSorting (5, sport, red, mediumCost, street, yellow);
@@ -88,7 +88,7 @@ int store[s], snumber;
 	printf("%d\n", store[0]);
 	printf("%d\n", store[1]);
 	
-	snumber = tagSearching ();
+	srchNumber = tagSearching ();
 	
-	printf("%d", snumber);	
+	printf("%d", srchNumber);	
 }
