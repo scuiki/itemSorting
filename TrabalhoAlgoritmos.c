@@ -14,7 +14,7 @@ int catalogueNumber = 1;
 
 va_start (valist, tag);
 
-//calculating catalogueNumber
+	//calculating catalogueNumber
 	for(int i = 0; i < tag; i++)
 		catalogueNumber = catalogueNumber * va_arg(valist, int);
 		
@@ -26,51 +26,49 @@ va_end(valist);
 int tagSearching () {
 
 int i = 0, value[n], searchNumber = 1;
-char division;
+char *sport, *street, *yellow, *red, *lowCost, *mediumCost, *highCost, *end = NULL;
 
-//execute until user types ".", which starts the search
-	while (division != '.'){
-	char str[100], *sport, *street, *yellow, *red, *lowCost, *mediumCost, *highCost;
+	//executing while string doesn't contain "."
+	while (end == NULL) {
+	char str[100];
 		fflush(stdin);
 		gets(str);
 
-//checking for a substring
-	sport = strstr (str, "sport");
-	street = strstr (str, "street");
-	yellow = strstr (str, "yellow");
-	red = strstr (str, "red");
-	lowCost = strstr (str, "lowCost");
-	mediumCost = strstr (str, "mediumCost");
-	highCost = strstr (str, "highCost");
-			
-		if (sport != NULL) {
-			value[i] = 2;
-			i++;
-		}	if (street != NULL) {
-				value[i] = 3;
+		//checking for substrings
+		sport = strstr (str, "sport");
+		street = strstr (str, "street");
+		yellow = strstr (str, "yellow");
+		red = strstr (str, "red");
+		lowCost = strstr (str, "lowCost");
+		mediumCost = strstr (str, "mediumCost");
+		highCost = strstr (str, "highCost");
+		end = strstr (str, ".");
+				
+			if (sport != NULL) {
+				value[i] = 2;
 				i++;
-			}	if (yellow != NULL) {
-					value[i] = 5;
+			}	if (street != NULL) {
+					value[i] = 3;
 					i++;
-				}	if (red != NULL) {
-						value[i] = 7;
+				}	if (yellow != NULL) {
+						value[i] = 5;
 						i++;
-					}	if (lowCost != NULL) {
-							value[i] = 11;
+					}	if (red != NULL) {
+							value[i] = 7;
 							i++;
-						}	if (mediumCost != NULL) {
-								value[i] = 13;
+						}	if (lowCost != NULL) {
+								value[i] = 11;
 								i++;
-							}	if (highCost != NULL) {
-									value[i] = 17;
+							}	if (mediumCost != NULL) {
+									value[i] = 13;
 									i++;
-								}
-
-//scanning "division" to determine if the user wants to add more tags or search				
-		scanf("%c", &division);	
+								}	if (highCost != NULL) {
+										value[i] = 17;
+										i++;
+									}
 	}
 
-//calculating searchNumber
+	//calculating searchNumber
 	for(int j = 0; j < i; j++)
 		searchNumber = searchNumber * value[j];
 		
@@ -80,7 +78,7 @@ char division;
 int main () {
 	
 //tags
-int	sport = 2, street = 3, yellow = 5, red = 7, lowCost = 11, mediumCost = 13, highCost = 17;
+int sport = 2, street = 3, yellow = 5, red = 7, lowCost = 11, mediumCost = 13, highCost = 17;
 
 int store[s], snumber;
 
