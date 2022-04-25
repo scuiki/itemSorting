@@ -32,7 +32,7 @@ int i = 0, value[n], searchNumber = 1;
 char *sSport, *sStreet, *sYellow, *sRed, *sLowCost, *sMediumCost, *sHighCost, *sEnd = NULL;
 
 	//executing while string doesn't contain "."
-	while (sEnd == NULL) {
+	do {
 	char str[100];
 		fflush(stdin);
 		gets(str);
@@ -69,7 +69,7 @@ char *sSport, *sStreet, *sYellow, *sRed, *sLowCost, *sMediumCost, *sHighCost, *s
 										value[i] = highCost;
 										i++;
 									}
-	}
+	} while (sEnd == NULL);
 
 	//calculating searchNumber
 	for(int j = 0; j < i; j++)
