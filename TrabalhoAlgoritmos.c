@@ -88,9 +88,9 @@ void layout () {
 	//header
 	printf(" _____________________________________________________________________________________________________________________\n");
 	
-	rightCorner(""); //skipLine
-	rightCorner("Available Tags:");
-	rightCorner(""); //skipLine
+	rightCorner (""); //skipLine
+	rightCorner ("Available Tags:");
+	rightCorner (""); //skipLine
 	rightCorner ("-sport");
 	rightCorner ("-street");
 	rightCorner ("-yellow");
