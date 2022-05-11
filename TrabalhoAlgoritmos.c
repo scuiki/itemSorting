@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <string.h>
+#include <stdbool.h>
 
 #define n 7 //number of tags
 #define s 10 //number of stores
@@ -29,47 +30,43 @@ va_end(valist);
 int searchNumber () {
 
 int i = 0, value[n], searchNumber = 1;
-char *sSport, *sStreet, *sYellow, *sRed, *sLowCost, *sMediumCost, *sHighCost, *sEnd;
+char *sSport, *sStreet, *sYellow, *sRed, *sLowCost, *sMediumCost, *sHighCost;
 
-	//executing while string doesn't contain "."
-	do {
-	char str[100];
-		fflush(stdin);
-		gets(str);
+char str[100];
+	fflush(stdin);
+	gets(str);
 
-		//checking for substrings
-		sSport = strstr (str, "sport");
-		sStreet = strstr (str, "street");
-		sYellow = strstr (str, "yellow");
-		sRed = strstr (str, "red");
-		sLowCost = strstr (str, "lowCost");
-		sMediumCost = strstr (str, "mediumCost");
-		sHighCost = strstr (str, "highCost");
-		sEnd = strstr (str, ".");
+	//checking for substrings
+	sSport = strstr (str, "sport");
+	sStreet = strstr (str, "street");
+	sYellow = strstr (str, "yellow");
+	sRed = strstr (str, "red");
+	sLowCost = strstr (str, "lowCost");
+	sMediumCost = strstr (str, "mediumCost");
+	sHighCost = strstr (str, "highCost");
 		
-			if (sSport != NULL) {
-				value[i] = sport;
+		if (sSport != NULL) {
+			value[i] = sport;
+			i++;
+		}	if (sStreet != NULL) {
+				value[i] = street;
 				i++;
-			}	if (sStreet != NULL) {
-					value[i] = street;
+			}	if (sYellow != NULL) {
+					value[i] = yellow;
 					i++;
-				}	if (sYellow != NULL) {
-						value[i] = yellow;
+				}	if (sRed != NULL) {
+						value[i] = red;
 						i++;
-					}	if (sRed != NULL) {
-							value[i] = red;
+					}	if (sLowCost != NULL) {
+							value[i] = lowCost;
 							i++;
-						}	if (sLowCost != NULL) {
-								value[i] = lowCost;
+						}	if (sMediumCost != NULL) {
+								value[i] = mediumCost;
 								i++;
-							}	if (sMediumCost != NULL) {
-									value[i] = mediumCost;
+							}	if (sHighCost != NULL) {
+									value[i] = highCost;
 									i++;
-								}	if (sHighCost != NULL) {
-										value[i] = highCost;
-										i++;
-									}
-	} while (sEnd == NULL);
+								}
 
 	//calculating searchNumber
 	for(int j = 0; j < i; j++)
@@ -79,7 +76,7 @@ char *sSport, *sStreet, *sYellow, *sRed, *sLowCost, *sMediumCost, *sHighCost, *s
 }
 
 void layout () {
-		
+	
 	//right corner position function
 	void rightCorner (char str[]) {
 		printf("                                                                                                   | %s\n", str);
@@ -99,11 +96,11 @@ void layout () {
 	rightCorner ("-mediumCost");
 	
 	//searchNote
-	printf("(?) Type \".\" to start searching...                                                                 | -highCost\n");
-		
+	printf("(?) Press \"ENTER\" to start a search...                                                             | -highCost\n");
+			
 	//bottomLine	
 	printf(" _____________________________________________________________________________________________________________________\n");
-	
+
 	//search
 	printf("|Search: ");
 }
@@ -111,16 +108,21 @@ void layout () {
 int main () {
 	
 int store[s], srchNumber;
+bool again;
 
 	layout ();
 
 	store[0] = catalogueNumber (3, sport, red, mediumCost);
 	store[1] = catalogueNumber (5, sport, red, mediumCost, street, yellow);
+
+	do {
+		srchNumber = searchNumber ();
+		printf("\n%d\n", srchNumber);	
 	
-/*	printf("%d\n", store[0]);
-	printf("%d\n", store[1]); */
-
-	srchNumber = searchNumber ();
-
-	printf("\n%d", srchNumber);	
+		printf("\n(?) Type \"1\" to make a new search...\n"); //searchNote	
+		scanf("%d", &again);
+		
+		if (again) 
+			layout (); 
+	} while (again);
 }
