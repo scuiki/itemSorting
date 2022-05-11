@@ -46,7 +46,7 @@ char *sSport, *sStreet, *sYellow, *sRed, *sLowCost, *sMediumCost, *sHighCost, *s
 		sMediumCost = strstr (str, "mediumCost");
 		sHighCost = strstr (str, "highCost");
 		sEnd = strstr (str, ".");
-				
+		
 			if (sSport != NULL) {
 				value[i] = sport;
 				i++;
@@ -78,17 +78,49 @@ char *sSport, *sStreet, *sYellow, *sRed, *sLowCost, *sMediumCost, *sHighCost, *s
 	return searchNumber;
 }
 
+void rightCorner (char str[]) {
+	
+	printf("                                                                                                   | %s\n", str);
+}
+
+void layout () {
+	
+	//header
+	printf(" _____________________________________________________________________________________________________________________\n");
+	
+	rightCorner(""); //skipLine
+	rightCorner("Available Tags:");
+	rightCorner(""); //skipLine
+	rightCorner ("-sport");
+	rightCorner ("-street");
+	rightCorner ("-yellow");
+	rightCorner ("-red");
+	rightCorner ("-lowCost");
+	rightCorner ("-mediumCost");
+	
+	//searchNote
+	printf("(?) Type \".\" to start searching...                                                                 | -highCost\n");
+		
+	//bottomLine	
+	printf(" _____________________________________________________________________________________________________________________\n");
+	
+	//search
+	printf("|Search: ");
+}
+
 int main () {
 	
 int store[s], srchNumber;
 
+	layout ();
+
 	store[0] = catalogueNumber (3, sport, red, mediumCost);
 	store[1] = catalogueNumber (5, sport, red, mediumCost, street, yellow);
 	
-	printf("%d\n", store[0]);
-	printf("%d\n", store[1]);
-	
+/*	printf("%d\n", store[0]);
+	printf("%d\n", store[1]); */
+
 	srchNumber = searchNumber ();
-	
-	printf("%d", srchNumber);	
+
+	printf("\n%d", srchNumber);	
 }
