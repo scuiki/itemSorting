@@ -87,7 +87,7 @@ void layout () {
 	
 	rightCorner (""); //skipLine
 	rightCorner ("Available Tags:");
-	rightCorner (""); //skipLine
+	rightCorner ("");
 	rightCorner ("-sport");
 	rightCorner ("-street");
 	rightCorner ("-yellow");
@@ -117,11 +117,18 @@ bool again;
 
 	do {
 		srchNumber = searchNumber ();
-		printf("\n%d\n", srchNumber);	
-	
-		printf("\n(?) Type \"1\" to make a new search...\n"); //searchNote	
-		scanf("%d", &again);
 		
+		//checking if the search is valid
+		if (srchNumber != 1) {
+			printf("\n%d\n", srchNumber);	
+	
+			printf("\n(?) Type \"1\" to make a new search...\n"); //searchNote	
+			scanf("%d", &again);
+		}	else {
+				printf("\nError\n");
+				again = 1;
+		  	}
+		  	
 		if (again) 
 			layout (); 
 	} while (again);
