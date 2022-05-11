@@ -78,12 +78,12 @@ char *sSport, *sStreet, *sYellow, *sRed, *sLowCost, *sMediumCost, *sHighCost, *s
 	return searchNumber;
 }
 
-void rightCorner (char str[]) {
-	
-	printf("                                                                                                   | %s\n", str);
-}
-
 void layout () {
+		
+	//right corner position function
+	void rightCorner (char str[]) {
+		printf("                                                                                                   | %s\n", str);
+	}
 	
 	//header
 	printf(" _____________________________________________________________________________________________________________________\n");
