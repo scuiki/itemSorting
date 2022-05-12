@@ -79,6 +79,16 @@ void line () {
 	printf(" _____________________________________________________________________________________________________________________\n");
 }
 
+void display (char a) {
+	printf("\n\n\n");
+	
+	for (int i = 0; i < 3; i++) {
+		printf("                            %c", a);
+	}
+	
+	printf("\n\n\n");
+}
+
 void layout () {
 	
 	//right corner position function
@@ -124,7 +134,9 @@ bool again;
 		
 		//checking if the search is valid
 		if (srchNumber != 1) {
-			printf("\n%d\n", srchNumber);	
+			printf("\n%d\n", srchNumber);
+			
+			display ("a");	
 	
 			printf("\n(?) Type \"1\" to make a new search...\n"); //searchNote
 			line ();
