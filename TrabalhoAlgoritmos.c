@@ -80,13 +80,13 @@ void line () {
 }
 
 void display (char a) {
-	printf("\n\n\n");
+	printf("\n\n\n\n");
 	
 	for (int i = 0; i < 3; i++) {
 		printf("                            %c", a);
 	}
 	
-	printf("\n\n\n");
+	printf("\n\n\n\n");
 }
 
 void layout () {
@@ -134,9 +134,12 @@ bool again;
 		
 		//checking if the search is valid
 		if (srchNumber != 1) {
-			printf("\n%d\n", srchNumber);
+			printf("\n%d\n", srchNumber);	
+		float d = 2;
 			
-			display ("a");	
+			for (float i = 0; i < d/3; i++){
+				display ("a");	
+			}
 	
 			printf("\n(?) Type \"1\" to make a new search...\n"); //searchNote
 			line ();
