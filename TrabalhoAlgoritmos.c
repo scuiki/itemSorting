@@ -75,6 +75,10 @@ char str[100];
 	return searchNumber;
 }
 
+void line () {
+	printf(" _____________________________________________________________________________________________________________________\n");
+}
+
 void layout () {
 	
 	//right corner position function
@@ -83,7 +87,7 @@ void layout () {
 	}
 	
 	//header
-	printf(" _____________________________________________________________________________________________________________________\n");
+	line ();
 	
 	rightCorner (""); //skipLine
 	rightCorner ("Available Tags:");
@@ -99,7 +103,7 @@ void layout () {
 	printf("(?) Press \"ENTER\" to start a search...                                                             | -highCost\n");
 			
 	//bottomLine	
-	printf(" _____________________________________________________________________________________________________________________\n");
+	line ();
 
 	//search
 	printf("|Search: ");
@@ -122,7 +126,9 @@ bool again;
 		if (srchNumber != 1) {
 			printf("\n%d\n", srchNumber);	
 	
-			printf("\n(?) Type \"1\" to make a new search...\n"); //searchNote	
+			printf("\n(?) Type \"1\" to make a new search...\n"); //searchNote
+			line ();
+				
 			scanf("%d", &again);
 		}	else {
 				printf("\nError\n");
