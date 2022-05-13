@@ -75,12 +75,10 @@ char str[100];
 	return searchNumber;
 }
 
-bool Busca(int numeroDeCatalogo,int numeroDeBusca){
-		if(numeroDeCatalogo%numeroDeBusca==0){
+bool busca(int numeroDeCatalogo,int numeroDeBusca){
+		if (numeroDeCatalogo % numeroDeBusca == 0){
 			return 1;
-		}
-		else 
-		return 0;
+		}	else return 0;
 	}
 
 void line () {
@@ -130,28 +128,30 @@ void layout () {
 int main () {
 	
 int store[s], srchNumber;
-float d = 0;
+float d;
 bool again, tem;
 
 	layout ();
 
 	store[0] = catalogueNumber (3, sport, red, mediumCost);
 	store[1] = catalogueNumber (5, sport, red, mediumCost, street, yellow);
-	store[2] = catalogueNumber (4,sport,yellow,red,street);
+	store[2] = catalogueNumber (4, sport, yellow, red, street);
 	store[3] = catalogueNumber (1, sport);
 
 	do {
-		srchNumber = searchNumber ();
-		d=0;	
+		d = 0;
+		srchNumber = searchNumber ();	
+		
 		//checking if the search is valid
 		if (srchNumber != 1) {
-			for(int i = 0;i<4;i++){
-			tem = Busca (store[i],srchNumber);
-				if(tem){
+			//searching
+			for(int i = 0; i < 4; i++){
+				tem = busca (store[i], srchNumber);
+				if (tem) {
 					d++;				
 				}
 			}
-			printf("%f", d);
+
 			printf("\n%d\n", srchNumber);				
 			for (float i = 0; i < d/3; i++){
 				display ("a");	
