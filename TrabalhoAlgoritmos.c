@@ -76,10 +76,10 @@ char str[100];
 }
 
 bool busca (int numeroDeCatalogo, int numeroDeBusca){
-		if (numeroDeCatalogo % numeroDeBusca == 0){
-			return 1;
-		}	else return 0;
-	}
+	if (numeroDeCatalogo % numeroDeBusca == 0){
+		return 1;
+	}	else return 0;
+}
 
 void line () {
 	printf(" _____________________________________________________________________________________________________________________\n");
