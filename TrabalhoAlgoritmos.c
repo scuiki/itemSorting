@@ -75,7 +75,7 @@ char str[100];
 	return searchNumber;
 }
 
-bool busca(int numeroDeCatalogo,int numeroDeBusca){
+bool busca (int numeroDeCatalogo, int numeroDeBusca){
 		if (numeroDeCatalogo % numeroDeBusca == 0){
 			return 1;
 		}	else return 0;
