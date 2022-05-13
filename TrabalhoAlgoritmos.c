@@ -22,7 +22,7 @@ va_start (valist, tag);
 	for(int i = 0; i < tag; i++)
 		catalogueNumber = catalogueNumber * va_arg(valist, int);
 		
-va_end(valist);	
+va_end (valist);	
 	
 	return catalogueNumber;
 }
