@@ -19,8 +19,8 @@ int catalogueNumber = 1;
 va_start (valist, tag);
 
 	//calculating catalogueNumber
-	for(int i = 0; i < tag; i++)
-		catalogueNumber = catalogueNumber * va_arg(valist, int);
+	for (int i = 0; i < tag; i++)
+		catalogueNumber = catalogueNumber * va_arg (valist, int);
 		
 va_end (valist);	
 	
@@ -33,8 +33,8 @@ int i = 0, value[n], searchNumber = 1;
 char *sSport, *sStreet, *sYellow, *sRed, *sLowCost, *sMediumCost, *sHighCost;
 
 char str[100];
-	fflush(stdin);
-	gets(str);
+	fflush (stdin);
+	gets (str);
 
 	//checking for substrings
 	sSport = strstr (str, "sport");
@@ -69,7 +69,7 @@ char str[100];
 								}
 
 	//calculating searchNumber
-	for(int j = 0; j < i; j++)
+	for (int j = 0; j < i; j++)
 		searchNumber = searchNumber * value[j];
 		
 	return searchNumber;
@@ -82,24 +82,24 @@ bool busca (int numeroDeCatalogo, int numeroDeBusca){
 }
 
 void line () {
-	printf(" _____________________________________________________________________________________________________________________\n");
+	printf (" _____________________________________________________________________________________________________________________\n");
 }
 
 void display (char a) {
-	printf("\n\n\n\n");
+	printf ("\n\n\n\n");
 	
 	for (int i = 0; i < 3; i++) {
-		printf("                            %c", a);
+		printf ("                            %c", a);
 	}
 	
-	printf("\n\n\n\n");
+	printf ("\n\n\n\n");
 }
 
 void layout () {
 	
 	//right corner position function
 	void rightCorner (char str[]) {
-		printf("                                                                                                   | %s\n", str);
+		printf ("                                                                                                   | %s\n", str);
 	}
 	
 	//header
@@ -116,13 +116,13 @@ void layout () {
 	rightCorner ("-mediumCost");
 	
 	//searchNote
-	printf("(?) Press \"ENTER\" to start a search...                                                             | -highCost\n");
+	printf ("(?) Press \"ENTER\" to start a search...                                                             | -highCost\n");
 			
 	//bottomLine	
 	line ();
 
 	//search
-	printf("|Search: ");
+	printf ("|Search: ");
 }
 
 int main () {
@@ -145,23 +145,23 @@ bool again, tem;
 		//checking if the search is valid
 		if (srchNumber != 1) {
 			//searching
-			for(int i = 0; i < 4; i++){
+			for (int i = 0; i < 4; i++){
 				tem = busca (store[i], srchNumber);
 				if (tem) {
 					d++;				
 				}
 			}
 
-			printf("\n%d\n", srchNumber);				
+			printf ("\n%d\n", srchNumber);				
 			for (float i = 0; i < d/3; i++){
 				display ("a");	
 			}
 
 	
-			printf("\n(?) Type \"1\" to make a new search...\n"); //searchNote
+			printf ("\n(?) Type \"1\" to make a new search...\n"); //searchNote
 			line ();
 				
-			scanf("%d", &again);
+			scanf ("%d", &again);
 		}	else {
 				printf("\nError\n");
 				again = 1;
