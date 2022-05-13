@@ -163,7 +163,7 @@ bool again, tem;
 				
 			scanf ("%d", &again);
 		}	else {
-				printf("\nError\n");
+				printf ("\nError\n");
 				again = 1;
 		  	}
 		  	
