@@ -75,24 +75,14 @@ char str[100];
 	return searchNumber;
 }
 
-bool busca (int numeroDeCatalogo, int numeroDeBusca){
-	if (numeroDeCatalogo % numeroDeBusca == 0){
+bool search (int catalogueN, int searchN) {
+	if (catalogueN % searchN == 0){
 		return 1;
 	}	else return 0;
 }
 
 void line () {
 	printf (" _____________________________________________________________________________________________________________________\n");
-}
-
-void display (char a) {
-	printf ("\n\n\n\n");
-	
-	for (int i = 0; i < 3; i++) {
-		printf ("                            %c", a);
-	}
-	
-	printf ("\n\n\n\n");
 }
 
 void layout () {
@@ -125,38 +115,58 @@ void layout () {
 	printf ("|Search: ");
 }
 
+void space () {
+	printf("\n\n\n\n\n");
+}
+
 int main () {
 	
-int store[s], srchNumber;
+int store[s], srchNumber, k;
 float d;
-bool again, tem;
+bool present, c[s], again;
 
 	layout ();
 
-	store[0] = catalogueNumber (3, sport, red, mediumCost);
+	store[0] = catalogueNumber (1, sport, red, mediumCost);
 	store[1] = catalogueNumber (5, sport, red, mediumCost, street, yellow);
 	store[2] = catalogueNumber (4, sport, yellow, red, street);
 	store[3] = catalogueNumber (1, sport);
+	store[4] = catalogueNumber (2, sport, yellow);
+	store[5] = catalogueNumber (1, sport);
+	store[6] = catalogueNumber (2, sport, yellow);
+	store[7] = catalogueNumber (2, sport, yellow);
+	store[8] = catalogueNumber (1, sport);
+	store[9] = catalogueNumber (2, highCost, yellow);
 
 	do {
-		d = 0;
+		//store names
+		char storeName[s][20] = {"Store1", "Store2", "Store3", "Store4", "Store5", "Store6", "Store7", "Store8", "Store9", "Store10"};
+		d = 0, k = 0;
 		srchNumber = searchNumber ();	
 		
 		//checking if the search is valid
 		if (srchNumber != 1) {
 			//searching
-			for (int i = 0; i < 4; i++){
-				tem = busca (store[i], srchNumber);
-				if (tem) {
-					d++;				
+			for (int i = 0; i < s; i++) {
+				present = search (store[i], srchNumber);
+				if (present) {
+					d++;
+					c[i] = present;			
 				}
 			}
 
-			printf ("\n%d\n", srchNumber);				
-			for (float i = 0; i < d/3; i++){
-				display ("a");	
+ 			space ();
+ 			
+			for (int i = 0; i < d; i++) {
+				if (c[i]) {
+					printf ("                        %s", storeName[i]);
+					k++;
+				}
+				if (k % 3 == 0)
+					space ();
 			}
-
+				
+			space ();
 	
 			printf ("\n(?) Type \"1\" to make a new search...\n"); //searchNote
 			line ();
