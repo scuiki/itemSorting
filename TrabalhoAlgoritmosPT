@@ -1,1 +1,180 @@
+#include <stdio.h>
+#include <stdarg.h>
+#include <string.h>
+#include <stdbool.h>
 
+#define n 7 //número de tags
+#define s 10 //número de lojas
+
+//tags
+int esportiva = 2, formal = 3, amarela = 5, vermelha = 7, baixoCusto = 11, medioCusto = 13, altoCusto = 17;
+
+//a biblioteca "stdarg.h" serve para determinar, quando chamada, quantos parâmetros a função tem
+int numeroDeCatalogo (int tag,...) {
+
+va_list valist;
+
+int numeroDeCatalogo = 1;
+
+va_start (valist, tag);
+
+	//calculando o Número de Catálogo
+	for (int i = 0; i < tag; i++)
+		numeroDeCatalogo = numeroDeCatalogo * va_arg (valist, int);
+		
+va_end (valist);	
+	
+	return numeroDeCatalogo;
+}
+
+int numeroDeBusca () {
+
+int i = 0, valor[n], numeroDeBusca = 1;
+char *sEsportiva, *sFormal, *sAmarela, *sVermelha, *sBaixoCusto, *sMedioCusto, *sAltoCusto;
+
+char str[100];
+	fflush (stdin);
+	gets (str);
+
+	//conferindo se contém as "substrings"
+	sEsportiva = strstr (str, "esportiva");
+	sFormal = strstr (str, "formal");
+	sAmarela = strstr (str, "amarela");
+	sVermelha = strstr (str, "vermelha");
+	sBaixoCusto = strstr (str, "baixoCusto");
+	sMedioCusto = strstr (str, "medioCusto");
+	sAltoCusto = strstr (str, "altoCusto");
+		
+		if (sEsportiva != NULL) {
+			valor[i] = esportiva;
+			i++;
+		}	if (sFormal != NULL) {
+				valor[i] = formal;
+				i++;
+			}	if (sAmarela != NULL) {
+					valor[i] = amarela;
+					i++;
+				}	if (sVermelha != NULL) {
+						valor[i] = vermelha;
+						i++;
+					}	if (sBaixoCusto != NULL) {
+							valor[i] = baixoCusto;
+							i++;
+						}	if (sMedioCusto != NULL) {
+								valor[i] = medioCusto;
+								i++;
+							}	if (sAltoCusto != NULL) {
+									valor[i] = altoCusto;
+									i++;
+								}
+
+	//calculando o Número de Busca
+	for (int j = 0; j < i; j++)
+		numeroDeBusca = numeroDeBusca * valor[j];
+		
+	return numeroDeBusca;
+}
+
+bool busca (int numeroDeCatalogo, int numeroDeBusca) {
+	if (numeroDeCatalogo % numeroDeBusca == 0){
+		return 1;
+	}	else return 0;
+}
+
+void linha () {
+	printf (" _____________________________________________________________________________________________________________________\n");
+}
+
+void organizacao () {
+	
+	//função para organizar no canto direito
+	void cantoDireito (char str[]) {
+		printf ("                                                                                                   | %s\n", str);
+	}
+	
+	//cabeçalho
+	linha ();
+	
+	cantoDireito (""); //pula linha
+	cantoDireito ("Tags Disponiveis:");
+	cantoDireito ("");
+	cantoDireito ("-esportiva");
+	cantoDireito ("-formal");
+	cantoDireito ("-amarela");
+	cantoDireito ("-vermelha");
+	cantoDireito ("-baixoCusto");
+	cantoDireito ("-medioCusto");
+	
+	//nota de busca
+	printf ("(?) Pressione \"ENTER\" para iniciar a busca...                                                      | -altoCusto\n");
+			
+	//linha de baixo	
+	linha ();
+
+	//busca
+	printf ("|Buscar: ");
+}
+
+void espaco () {
+	printf("\n\n\n\n\n");
+}
+
+int main () {
+	
+int loja[s], nDeBusca, k;
+bool tem[s], repetir;
+
+	organizacao ();
+
+	loja[0] = numeroDeCatalogo (3, esportiva, vermelha, baixoCusto);
+	loja[1] = numeroDeCatalogo (5, esportiva, vermelha, medioCusto, formal, amarela);
+	loja[2] = numeroDeCatalogo (4, esportiva, amarela, vermelha, formal);
+	loja[3] = numeroDeCatalogo (2, esportiva, vermelha);
+	loja[4] = numeroDeCatalogo (2, esportiva, amarela);
+	loja[5] = numeroDeCatalogo (1, esportiva);
+	loja[6] = numeroDeCatalogo (2, esportiva, amarela);
+	loja[7] = numeroDeCatalogo (2, esportiva, amarela);
+	loja[8] = numeroDeCatalogo (1, formal);
+	loja[9] = numeroDeCatalogo (2, altoCusto, amarela);
+
+	do {
+		//nome das lojas
+		char nomeDaLoja[s][20] = {"Loja1", "Loja2", "Loja3", "Loja4", "Loja5", "Loja6", "Loja7", "Loja8", "Loja9", "Loja10"};
+		k = 0;
+		nDeBusca = numeroDeBusca ();	
+		
+		//verificando se a busca é válida
+		if (nDeBusca != 1) {
+			//buscando
+			for (int i = 0; i < s; i++) 
+				tem[i] = busca (loja[i], nDeBusca);		
+
+ 			espaco ();
+ 			
+			for (int i = 0; i < s; i++) {
+				if (tem[i]) {
+					printf ("                        %s", nomeDaLoja[i]);
+					k++;
+				}
+				
+				if (k == 3) {
+					espaco ();
+					k = 0;
+				}
+			}
+			
+			espaco ();
+	
+			printf ("\n(?) Digite \"1\" para fazer uma nova busca...\n"); //nota de busca
+			linha ();
+				
+			scanf ("%d", &repetir);
+		}	else {
+				printf ("\nErro\n");
+				repetir = 1;
+		  	}
+		  	
+		if (repetir) 
+			organizacao (); 
+	} while (repetir);
+}
