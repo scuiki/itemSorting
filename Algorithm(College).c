@@ -122,50 +122,47 @@ void space () {
 int main () {
 	
 int store[s], srchNumber, k;
-float d;
-bool present, c[s], again;
+bool occur[s], again;
 
 	layout ();
 
-	store[0] = catalogueNumber (1, sport, red, mediumCost);
+	store[0] = catalogueNumber (3, sport, red, lowCost);
 	store[1] = catalogueNumber (5, sport, red, mediumCost, street, yellow);
 	store[2] = catalogueNumber (4, sport, yellow, red, street);
-	store[3] = catalogueNumber (1, sport);
+	store[3] = catalogueNumber (2, sport, red);
 	store[4] = catalogueNumber (2, sport, yellow);
 	store[5] = catalogueNumber (1, sport);
 	store[6] = catalogueNumber (2, sport, yellow);
 	store[7] = catalogueNumber (2, sport, yellow);
-	store[8] = catalogueNumber (1, sport);
+	store[8] = catalogueNumber (1, street);
 	store[9] = catalogueNumber (2, highCost, yellow);
 
 	do {
 		//store names
 		char storeName[s][20] = {"Store1", "Store2", "Store3", "Store4", "Store5", "Store6", "Store7", "Store8", "Store9", "Store10"};
-		d = 0, k = 0;
+		k = 0;
 		srchNumber = searchNumber ();	
 		
 		//checking if the search is valid
 		if (srchNumber != 1) {
 			//searching
-			for (int i = 0; i < s; i++) {
-				present = search (store[i], srchNumber);
-				if (present) {
-					d++;
-					c[i] = present;			
-				}
-			}
+			for (int i = 0; i < s; i++) 
+				occur[i] = search (store[i], srchNumber);		
 
  			space ();
  			
-			for (int i = 0; i < d; i++) {
-				if (c[i]) {
+			for (int i = 0; i < s; i++) {
+				if (occur[i]) {
 					printf ("                        %s", storeName[i]);
 					k++;
 				}
-				if (k % 3 == 0)
-					space ();
-			}
 				
+				if (k == 3) {
+					space ();
+					k = 0;
+				}
+			}
+			
 			space ();
 	
 			printf ("\n(?) Type \"1\" to make a new search...\n"); //searchNote
